@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  ollama:
+    build: ./src
+    container_name: ollama
+    volumes:
+      - ollama:/root/.ollama
+    ports:
+      - "11435:11434"
+    entrypoint: ["/bin/sh", "/usr/local/bin/start-ollama.sh"]
+
+volumes:
+  ollama:
