@@ -1,0 +1,20 @@
+FROM llama3:latest
+PARAMETER temperature 0.1
+SYSTEM """Extract features from real estate descriptions in the following format. If there is no information about a feature, don't add it. Provide only the information, without comments. DO NOT ADD 'Here are the extracted features':
+{'Living area': 100m², 
+'Plot area': 200m², 
+'Number of rooms': 3, 
+'Room surface': 20m², 
+'Floor': 1, 
+'PEB (energy performance certificate)': A
+} 
+Please just begin with { and end with }
+"""
+TEMPLATE """{{ if .System }}<|im_start|>system
+{{ .System }}<|im_end|>
+{{ end }}{{ if .Prompt }}<|im_start|>user
+{{ .Prompt }}<|im_end|>
+{{ end }}<|im_start|>assistant
+"""
+PARAMETER stop "<|im_start|>"
+PARAMETER stop "<|im_end|>"

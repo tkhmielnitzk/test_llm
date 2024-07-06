@@ -1,0 +1,20 @@
+FROM llama3:latest
+
+# sets the temperature to 1 [higher is more creative, lower is more coherent]
+PARAMETER temperature 0.3
+
+# sets a custom system message to specify the behavior of the chat assistant
+SYSTEM """Extract features from real estate descriptions in the following format. if there is no information about a feature, leave it empty:
+{'Living area': 100m², 
+'Plot area': 200m², 
+'Number of rooms': 3, 
+'Room surface': 20m², 
+'Floor': 1, 
+'PEB (energy performance certificate)': A}"""
+
+TEMPLATE """{{ if .System }}<|im_start|>system
+{{ .System }}<|im_end|>
+{{ end }}{{ if .Prompt }}<|im_start|>user
+{{ .Prompt }}<|im_end|>
+{{ end }}<|im_start|>assistant
+"""
