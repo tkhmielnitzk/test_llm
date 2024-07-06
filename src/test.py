@@ -8,7 +8,7 @@ if __name__ == '__main__':
     headers = {'Content-Type': 'application/json'}
     data = {
         'model': model,
-        'prompt': 'Appartement T3 de 60m² avec une terrasse de 20m² au 3e étage et ta mère à 4 pattes. third floor avec loyer de 900euros par mois.',
+        'prompt': 'Appartement T3 de 60m² avec une terrasse de 20m² au 3e étage et ton père le boucher. third floor avec loyer de 900euros par mois.',
         'stream': False,
     }
 
